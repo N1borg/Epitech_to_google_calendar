@@ -11,8 +11,17 @@ headers = {
 
 def get_epitech_login(epitechCookie):
     url = 'https://intra.epitech.eu/user/?format=json'
-    user_data = requests.get(url, cookies={'user': epitechCookie}, headers=headers).json()
-    return user_data['login']
+
+    response = requests.get(url, cookies=epitechCookie, headers=headers)
+    
+    # Try parsing JSON only if the response is valid
+    try:
+        user_data = response.json()
+    except ValueError as e:
+        print("Error parsing JSON:", e)
+        return None
+    
+    return user_data.get('login')
 
 
 # get_all_epitech_events() => all after one month before today
@@ -82,7 +91,8 @@ def get_all_epitech_events(epitechCookie, start: datetime = None, end: datetime 
         url += '&start=' + start.strftime('%Y-%m-%d')
     if end is not None:
         url += '&end=' + end.strftime('%Y-%m-%d')
-    return requests.get(url, cookies={'user': epitechCookie}, headers=headers).json()
+
+    return requests.get(url, cookies=epitechCookie, headers=headers).json()
 
 
 # same as get_all_epitech_events but keep only registered epitech events
@@ -107,7 +117,8 @@ def get_all_epitech_activities(epitechCookie, start=None, end=None):
     start, end = compute_start_end(start, end)
 
     url = f'https://intra.epitech.eu/module/board/?format=json&start={start.strftime("%Y-%m-%d")}&end={end.strftime("%Y-%m-%d")}'
-    return requests.get(url, cookies={'user': epitechCookie}, headers=headers).json()
+
+    return requests.get(url, cookies=epitechCookie, headers=headers).json()
 
 
 # same as get_all_epitech_activities but keep only registered projects
@@ -128,7 +139,8 @@ def get_my_epitech_projects(epitechAutologin, start=None, end=None):
 
 def get_module_activities(epitechCookie, module_name):
     url = f'https://intra.epitech.eu/module/{module_name}/?format=json'
-    return requests.get(url, cookies={'user': epitechCookie}, headers=headers).json()['activites']
+
+    return requests.get(url, cookies=epitechCookie, headers=headers).json()['activites']
 
 
 def is_assistant(epitechLogin, event):

@@ -34,7 +34,7 @@ $ python3 main.py
 ### Fetch all events since date
 
 ```
-$ python3 main.py YYYY-MM-DD
+$ python3 main.py
 ```
 
 # Config
@@ -47,13 +47,16 @@ $ sudo python3 -m pip install -r requirements.txt
 
 ## Config file
 
-Create a `config.json` file (from `config-sample.json`) with the following content at root of the repo:
+Create a `config.json` file (from `config.json.example`) with the following content at root of the repo:
 
 ```json
 [
     {
         "comment": "student / aer ...",
-        "epitech_cookie": "...",
+        "epitech_cookie_user": "...",
+        "epitech_cookie_qJr652JEVngMMdoiZDM7to9gj6A": "...",
+        "epitech_cookie_JPc1XZTVYMjyl1dbBwjsjqpE0nI": "...",
+        "epitech_cookie_Ga_Ghl8eNINamy9l03fva-3KTvc": "...",
         "calendarID_events": "...@group.calendar.google.com",
         "calendarID_timeline": "...@group.calendar.google.com",
         "calendarID_teaching_team": "...@group.calendar.google.com",
@@ -63,7 +66,7 @@ Create a `config.json` file (from `config-sample.json`) with the following conte
 ```
 
  - `comment` is what you want, it doesn't matter, it's just useful not to get mixed up if you have multiple accounts
- - `epitech_cookie` is your user cookie, find it by going on the intra and going into dev console -> application -> cookies -> user
+ - `epitech_cookie_user` is your user cookie, find it by going on the intra and going into dev console -> application -> cookies -> user
  - `calendarID_events` is the calendar in which you want to put all registered events
  - `calendarID_timeline` is the calendar in which you want to put projects timeline
  - `calendarID_teaching_team` is the calendar in which you want to put events which you supervise (HUB activities for example)
@@ -78,7 +81,10 @@ If you want to put all events in only one calendarID you can by using the same c
 [
     {
         "comment": "student",
-        "epitech_cookie": "...",
+        "epitech_cookie_user": "...",
+        "epitech_cookie_qJr652JEVngMMdoiZDM7to9gj6A": "...",
+        "epitech_cookie_JPc1XZTVYMjyl1dbBwjsjqpE0nI": "...",
+        "epitech_cookie_Ga_Ghl8eNINamy9l03fva-3KTvc": "...",
         "calendarID_events": "...@group.calendar.google.com",
         "calendarID_timeline": "...@group.calendar.google.com",
         "calendarID_teaching_team": "...@group.calendar.google.com",
@@ -86,7 +92,10 @@ If you want to put all events in only one calendarID you can by using the same c
     },
     {
         "comment": "aer",
-        "epitech_cookie": "...",
+        "epitech_cookie_user": "...",
+        "epitech_cookie_qJr652JEVngMMdoiZDM7to9gj6A": "...",
+        "epitech_cookie_JPc1XZTVYMjyl1dbBwjsjqpE0nI": "...",
+        "epitech_cookie_Ga_Ghl8eNINamy9l03fva-3KTvc": "...",
         "calendarID_events": "...@group.calendar.google.com",
         "calendarID_timeline": "...@group.calendar.google.com",
         "calendarID_teaching_team": "...@group.calendar.google.com",
